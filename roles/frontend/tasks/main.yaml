@@ -2,19 +2,23 @@
     ansible.builtin.dnf:
       name: nginx
       state: latest
+      
   - name: start and enable nginx
     ansible.builtin.service:
       name: nginx
       state: started
       enabled: yes
+
   - name: delete default website
     ansible.builtin.file:
       path: /usr/share/nginx/html
       state: absent
+
   - name: create html directory
     ansible.builtin.file:
       path: /usr/share/nginx/html
       state: directory
+
   - name: download and extract frontend code
     ansible.builtin.unarchive:
       src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
