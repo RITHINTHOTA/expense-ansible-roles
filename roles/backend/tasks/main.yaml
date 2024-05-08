@@ -38,8 +38,8 @@
       chdir: /app
 
   - name: copy backend service
-    ansible.builtin.copy:
-       src: backend.service
+    ansible.builtin.template:
+       src: backend.service.j2
        dest: /etc/systemd/system/backend.service
 
   - name: install python mysql dependencies
