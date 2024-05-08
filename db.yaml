@@ -1,5 +1,5 @@
 - name: configure db server
-  hosts: 172.31.27.28
+  hosts: db
   become: yes
   roles:
   - db 
