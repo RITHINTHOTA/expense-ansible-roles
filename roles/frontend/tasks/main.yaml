@@ -9,21 +9,26 @@
       state: started
       enabled: yes
 
-  - name: delete default website
-    ansible.builtin.file:
-      path: /usr/share/nginx/html
-      state: absent
+  # - name: delete default website
+  #   ansible.builtin.file:
+  #     path: /usr/share/nginx/html
+  #     state: absent
 
-  - name: create html directory
-    ansible.builtin.file:
-      path: /usr/share/nginx/html
-      state: directory
+  # - name: create html directory
+  #   ansible.builtin.file:
+  #     path: /usr/share/nginx/html
+  #     state: directory
 
-  - name: download and extract frontend code
-    ansible.builtin.unarchive:
-      src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-      dest: /usr/share/nginx/html
-      remote_src: yes
+  # - name: download and extract frontend code
+  #   ansible.builtin.unarchive:
+  #     src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+  #     dest: /usr/share/nginx/html
+  #     remote_src: yes
+
+  - name: Run app-pre-req
+    ansible.builtin.import_rule:
+       name: common
+       tasks_from: app-pre-req
   
   - name: copy backend conf
     ansible.builtin.template:
