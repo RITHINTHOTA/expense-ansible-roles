@@ -26,7 +26,7 @@
   #     remote_src: yes
 
   - name: Run app-pre-req
-    ansible.builtin.import_rule:
+    ansible.builtin.import_role:
        name: common
        tasks_from: app-pre-req
   
