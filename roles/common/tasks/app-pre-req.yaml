@@ -3,13 +3,14 @@
     path: "{{ app_location }}"
     state: Absent
     ignore_errors: yes
+
 - name: create a directory
   ansible.builtin.file:
     path: "{{ app_location }}"
     state: directory
+
 - name: dowmload and extract code
-  ansible.builtin.unarchieve:
+  ansible.builtin.unarchive:
      src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip
      dest: "{{ app_location }}"
      remote_src: yes
-     
